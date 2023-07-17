@@ -1,4 +1,7 @@
+import dotenv from 'dotenv';
 import axios from 'axios';
+
+dotenv.config();
 
 // Mpesa credentials
 const consumer_key = process.env.CONSUMER_KEY;
@@ -38,10 +41,9 @@ export const registerUrls = async (req, res) => {
 
 		res.status(200).json({
 			data,
-			ShortCode,
 		});
 	} catch (error) {
-		console.error(error);
+		console.error(error.response.data);
 		res.status(400).json(error.response.data);
 	}
 };
@@ -135,11 +137,12 @@ const access_token = async () => {
 				password: consumer_secret,
 			},
 		});
+		console.log(response.data);
 
 		let _access_token = await response.data.access_token;
 
 		return _access_token;
 	} catch (error) {
-		console.error(error);
+		console.error(error.response.data);
 	}
 };
