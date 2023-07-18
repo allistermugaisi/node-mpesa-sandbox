@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 
 import paymentRoutes from './routes/payments.js';
 
@@ -12,6 +13,7 @@ app.get('/', (req, res) => {
 	res.json({ message: 'Welcome to Node Mpesa API sandbox endpoint!' });
 });
 
+app.use(cors('*'));
 app.use('/api/v1/payments', paymentRoutes);
 
 const PORT = process.env.PORT || 5000;
