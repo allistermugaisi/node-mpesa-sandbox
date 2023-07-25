@@ -137,7 +137,6 @@ const access_token = async () => {
 				password: consumer_secret,
 			},
 		});
-		console.log(response.data);
 
 		let _access_token = await response.data.access_token;
 
