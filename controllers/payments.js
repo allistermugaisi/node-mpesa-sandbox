@@ -120,7 +120,7 @@ export const initializeStk = async (req, res) => {
 			data,
 		});
 	} catch (error) {
-		console.error(error);
+		console.error(error.response);
 		res.status(400).json(error.response.data);
 	}
 };
